@@ -62,13 +62,13 @@ class Residualblock(nn.Module):
         self.use_residual = use_residual
         self.numrepeat = numrepeat
 
-        def forward(self,x):
-            for layer in self.layers:
-                if self.use_residual:
-                    x= layer(x) + x
-                else:
-                    x= layer(x)
-            return x
+    def forward(self,x):
+        for layer in self.layers:
+            if self.use_residual:
+                x= layer(x) + x
+            else:
+                x= layer(x)
+        return x
         
 class Scaleprediction(nn.Module):
     def __init__(self,inchannels, numclasses):
